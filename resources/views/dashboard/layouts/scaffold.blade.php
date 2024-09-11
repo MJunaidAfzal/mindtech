@@ -10,6 +10,11 @@
     @include('dashboard.partials.styles')
 </head>
 <body  class="geex-dashboard">
+    <style>
+        body{
+            background-color: #f6f6f6;
+        }
+    </style>
     @include('dashboard.partials.header')
     <main class="geex-main-content">
         @include('dashboard.partials.sidebar')
