@@ -272,7 +272,7 @@
             <div id="eventsMenu" class="collapse">
                 <ul class="list-unstyled ps-3">
                     <a href="">
-                        <li id="list">Upcoming Conferences</li> <!-- Added li -->
+                        <li id="list">S'inscrire</li> <!-- Added li -->
                     </a>
                 </ul>
             </div>

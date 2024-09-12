@@ -27,4 +27,11 @@ class DashboardController extends Controller
         $data ['heading'] = 'Planning des événements,';
         return view('dashboard.pages.calender',$data);
     }
+
+    public function table()
+    {
+        $data ['title'] = 'Table';
+        $data ['heading'] = 'Participer a un événement,';
+        return view('dashboard.pages.table',$data);
+    }
 }

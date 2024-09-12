@@ -11,3 +11,4 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('form' , [DashboardController::class , 'form'])->name('form');
 Route::get('calender' , [DashboardController::class , 'calender'])->name('calender');
+Route::get('table' , [DashboardController::class , 'table'])->name('table');
