@@ -58,6 +58,7 @@
                 overflow-y: auto;
                 scrollbar-width: none;
                 border: 1px solid white;
+                min-width: 0px;
             }
 
 
@@ -85,7 +86,7 @@
                 border-radius: 0;
                 max-height: 100vh;
                 overflow-y: auto;
-                z-index: 100
+                min-width: 0px;
 
                 /* Rounded border */
             }

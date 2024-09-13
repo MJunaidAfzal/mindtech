@@ -95,9 +95,12 @@
                 </div>
 
                 <div class="geex-content__header__popup__content">
+                    <a href="#" class="geex-header__menu__link geex-customizer__btn--light"><i style="font-size:25px" class="uil uil-sun"></i></a>
+                    <a href="#" class="geex-header__menu__link geex-customizer__btn--dark"><i style="margin-left: 40px;margin-top:-25px;font-size:25px" class="uil uil-moon"></i></a>
                     <ul class="geex-content__header__popup__items">
+
                         <li class="geex-content__header__popup__item">
-                            <a class="geex-content__header__popup__link" href="#">
+                            <a style="margin-top: 20px" class="geex-content__header__popup__link" href="#">
                                 <i class="uil uil-user"></i>
                                 Profile
                             </a>
