@@ -78,7 +78,7 @@
     <ul class="geex-content__header__quickaction">
         <li class="geex-content__header__quickaction__item">
             <a id="hides" style="background:color:white" href="#" class="geex-content__header__quickaction__link">
-                <img class="user-img" src="{{asset('assets/img/avatar/user.svg')}}" alt="user"><span>Mahabub Alam <i class="uil uil-arrow-down"></i></span>
+                <img class="user-img" src="{{asset('assets/img/avatar/user.svg')}}" alt="user"><span>{{ auth()->user()->name }} <i class="uil uil-arrow-down"></i></span>
             </a>
             <a id="shown" style="background:color:white" href="#" class="geex-content__header__quickaction__link">
                 <img class="user-img" src="{{asset('assets/img/avatar/user.svg')}}" alt="user"></span>
@@ -89,7 +89,7 @@
                         <img src="{{asset('assets/img/avatar/user.svg')}}" alt="user">
                     </div>
                     <div class="geex-content__header__popup__header__content">
-                        <h3 class="geex-content__header__popup__header__title">Mahabub Alam</h3>
+                        <h3 class="geex-content__header__popup__header__title">{{ auth()->user()->name }}</h3>
                         <span class="geex-content__header__popup__header__subtitle">CEO, Themesdaddy</span>
                     </div>
                 </div>
@@ -100,12 +100,12 @@
                     <ul class="geex-content__header__popup__items">
 
                         <li class="geex-content__header__popup__item">
-                            <a style="margin-top: 20px" class="geex-content__header__popup__link" href="#">
+                            <a style="margin-top: 20px" class="geex-content__header__popup__link" href="{{ route('form') }}">
                                 <i class="uil uil-user"></i>
                                 Profile
                             </a>
                         </li>
-                        <li class="geex-content__header__popup__item">
+                        {{-- <li class="geex-content__header__popup__item">
                             <a class="geex-content__header__popup__link" href="#">
                                 <i class="uil uil-cog"></i>
                                 Settings
@@ -128,11 +128,14 @@
                                 <i class="uil uil-bell"></i>
                                 Help
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="geex-content__header__popup__footer">
-                    <a href="#" class="geex-content__header__popup__footer__link">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="#" class="geex-content__header__popup__footer__link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="uil uil-arrow-up-left"></i>Logout
                     </a>
                 </div>

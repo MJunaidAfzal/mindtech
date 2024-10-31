@@ -299,8 +299,14 @@
 
         <!-- Log Out Button -->
         <div class="logout-section">
-            <button style="background-color: #fd9393;color:red;text-align:left" class="btn w-100 mt-3">
-                <i style="font-size: 20px;margin-top:15px" class="uil uil-sign-out-alt me-2 "></i> Log Out
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <button
+                style="background-color: #fd9393; color:red; text-align:left"
+                class="btn w-100 mt-3"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i style="font-size: 20px; margin-top:15px" class="uil uil-sign-out-alt me-2"></i> Log Out
             </button>
         </div>
     </div>
