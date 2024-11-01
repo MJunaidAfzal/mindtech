@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('company_name')->nullable();
             $table->string('vat_number')->nullable();
+            $table->string('image')->nullable();
         });
     }
 

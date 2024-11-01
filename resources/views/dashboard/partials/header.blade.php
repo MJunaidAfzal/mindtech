@@ -15,7 +15,7 @@
 
     }
     .title{
-        margin-top:-15px;
+        margin-top: -40px;
     }
 
     #hides{
@@ -78,15 +78,39 @@
     <ul class="geex-content__header__quickaction">
         <li class="geex-content__header__quickaction__item">
             <a id="hides" style="background:color:white" href="#" class="geex-content__header__quickaction__link">
-                <img class="user-img" src="{{asset('assets/img/avatar/user.svg')}}" alt="user"><span>{{ auth()->user()->name }} <i class="uil uil-arrow-down"></i></span>
+                @if(!empty(auth()->user()->image))
+                <div>
+                    <img class="user-img" src="{{ asset('upload/profile/'.auth()->user()->image) }}" alt="image" height="50px"><span>{{ auth()->user()->name }}</span> <i class="uil uil-arrow-down"></i>
+                </div>
+                @else
+                <div>
+                    <img class="user-img" src="{{ asset('images/user1.png') }}" alt="image" height="50px"><span>{{ auth()->user()->name }}</span> <i class="uil uil-arrow-down"></i>
+                </div>
+                @endif
             </a>
             <a id="shown" style="background:color:white" href="#" class="geex-content__header__quickaction__link">
-                <img class="user-img" src="{{asset('assets/img/avatar/user.svg')}}" alt="user"></span>
+                @if(!empty(auth()->user()->image))
+                <div>
+                    <img style="border-radius:20px" class="user-img" src="{{ asset('upload/profile/'.auth()->user()->image) }}" alt="image" height="50px">
+                </div>
+                @else
+                <div>
+                    <img class="user-img" src="{{ asset('images/user1.png') }}" alt="image" height="50px">
+                </div>
+                @endif
             </a>
             <div class="geex-content__header__popup geex-content__header__popup--author">
                 <div  class="geex-content__header__popup__header">
                     <div class="geex-content__header__popup__header__img">
-                        <img src="{{asset('assets/img/avatar/user.svg')}}" alt="user">
+                        @if(!empty(auth()->user()->image))
+                        <div>
+                            <img class="user-img" src="{{ asset('upload/profile/'.auth()->user()->image) }}" alt="image" height="50px">
+                        </div>
+                        @else
+                        <div>
+                            <img class="user-img" src="{{ asset('images/user1.png') }}" alt="image" height="50px">
+                        </div>
+                        @endif
                     </div>
                     <div class="geex-content__header__popup__header__content">
                         <h3 class="geex-content__header__popup__header__title">{{ auth()->user()->name }}</h3>
@@ -147,3 +171,10 @@
         </div>
     </div>
 </div>
+ {{-- <div class="col-md-12">
+                  <a href="{{ route('events.index') }}">
+                    <button  class="animated-button"
+                    style="background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right;    margin-bottom: 15px;">Liste des événements
+                </button>
+                  </a>
+                </div> --}}

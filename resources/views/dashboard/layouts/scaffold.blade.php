@@ -37,12 +37,12 @@
                     message: '{{ Session::get('success') }}',
                     position: 'topRight',
                     timeout: 5000,
-                    backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+                    backgroundColor: 'linear-gradient(to right, #ff56a8, #ff832b)',
                     icon: 'fa fa-check',
                     iconColor: '#ffffff',
                     animateInside: true,
                     closeOnClick: true,
-                    progressBarColor: '#056b0a',
+                    progressBarColor: 'orange',
                 });
             @endif
 
@@ -67,12 +67,12 @@
                     message: '{{ Session::get('info') }}',
                     position: 'topRight',
                     timeout: 5000,
-                    backgroundColor: 'linear-gradient(to right, #2196F3, #21CBF3)',
+                    backgroundColor: 'linear-gradient(to right, #ff832b, #ff56a8)',
                     icon: 'fa fa-info',
                     iconColor: '#ffffff',
                     animateInside: true,
                     closeOnClick: true,
-                    progressBarColor: '#0a3157',
+                    progressBarColor: 'pink',
                 });
             @endif
 
@@ -94,6 +94,14 @@
         {{-- @include('dashboard.partials.footer') --}}
     </main>
     @stack('scripts')
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+<script>
+   $(document).ready(function () {
+       $('#table').DataTable();
+   });
+
+   </script>
     @include('dashboard.partials.scripts')
 </body>
 </html>

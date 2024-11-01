@@ -7,7 +7,7 @@
         @media (min-width: 100px) {
             .container {
                 margin-top: -80px;
-                height: 680px
+                height: 820px
             }
             .resso{
                 display: none;
@@ -30,7 +30,7 @@
             }
             .container {
                 margin-top: -130px;
-                height: 350px;
+                height: 385px;
             }
             .resso{
                 display: block;
@@ -77,7 +77,7 @@
                 <button class="animated-button"
                 style="background: white;color:orange;border-radius:10px;border: orange 1px groove;padding:10px;float: right;padding-left:50px;padding-right:50px">Annuler</button>
             </a>
-            <form action="{{ route('profile.edit') }}" method="POST">
+            <form action="{{ route('profile.edit') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-4">
@@ -95,17 +95,39 @@
                         <label for="E-mail">E-mail</label><br>
                         <input value="{{ $user->email }}" type="email" name="email" id="E-mail" placeholder="Enter E-mail"><br><br>
                         <label for="NumérodeTVA">NumérodeTVA</label><br>
-                        <input value="{{ $user->vat_number }}" type="number" name="vat_number" id="NumérodeTVA" placeholder="Enter NumérodeTVA">
+                        <input value="{{ $user->vat_number }}" type="number" name="vat_number" id="NumérodeTVA" placeholder="Enter NumérodeTVA"><br><br>
+                        <label for="pic">Photo de profil</label><br>
+                        <input value="{{ $user->image }}" type="file"
+                        name="image"/>
+
                     </div>
+
                     <div class="col-md-4 mt-4 resso">
-                        <!-- Modified button with animation -->
+                        @if(!empty($user->image))
+                        <div style="margin-top:170px">
+                            <img src="{{ asset('upload/profile/'.$user->image) }}" alt="image" height="100px">
+                        </div>
+                        @else
+                        <div style="margin-top:170px">
+                            <img src="{{ asset('images/user1.png') }}" alt="image" height="100px">
+                        </div>
+                        @endif
+
                         <br>
                         <button type="submit" class="animated-button"
-                            style="margin-right: -175px;margin-top: 5px;background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right">Modifier
+                            style="margin-right: -175px;margin-top: -260px;background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right">Modifier
                             Enregister</button>
                     </div>
                     <div class="col-md-4 mt-4 reso">
-                        <!-- Modified button with animation -->
+                        @if(!empty($user->image))
+                        <div>
+                            <img src="{{ asset('upload/profile/'.$user->image) }}" alt="image" height="50px">
+                        </div>
+                        @else
+                        <div>
+                            <img src="{{ asset('images/user1.png') }}" alt="image" height="50px">
+                        </div>
+                        @endif
                         <br>
                         <button type="submit" class="animated-button"
                             style="width:100%; background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right">Modifier

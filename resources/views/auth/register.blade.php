@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -46,8 +46,6 @@
             align-items: center;
             height: 100vh;
             background: linear-gradient(90deg, #ff832b, #ff56a8, #ff832b);
-
-
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             margin: 0;
@@ -71,7 +69,7 @@
 
         .login-container:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px #ff832b;
+            box-shadow: 0 0 30px #ffcc00;
         }
 
         .login-container::before {
@@ -91,7 +89,7 @@
             text-align: center;
             margin-bottom: 30px;
             font-size: 24px;
-            color: rgb(224, 63, 90);
+            color: #ff56a8;
         }
 
         .input-group {
@@ -116,7 +114,7 @@
             font-size: 16px;
             transition: border-bottom 0.3s;
             border-radius: 5px;
-            border: #ff832b 2px groove
+            border: #ff832b 2px groove;
         }
 
         .input-group input:focus {
@@ -145,6 +143,7 @@
 
         .login-btn {
             background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);
+
             border: none;
             padding: 12px 20px;
             color: #000;
@@ -158,27 +157,35 @@
         }
 
         .login-btn:hover {
-            background-color: #ff832b;
+            background-color: #e6b800;
             transform: scale(1.05);
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
-        <form action="{{ route('custom.login') }}" method="POST">
+        <h2>Register</h2>
+        <form action="{{ route('custom.register') }}" method="POST">
             @csrf
            <div class="row">
                <div class="input-group">
             <div class="col-md-12">
-                    <label style="color: black" for="email">Email:</label>
+
+                <label style="color: #000" for="name">Name:</label>
+                <input type="text" name="name" required placeholder="Enter your Name">
+                @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
+
+                    <label style="margin-top: 20px;color: #000" for="email">Email:</label>
                     <input type="email" name="email" required placeholder="Enter your Email">
                     @error('email')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <button type="submit" class="login-btn">LOGIN</button>
+
+                    <button type="submit" class="login-btn">REGISTER</button>
                     <div style="margin-top: 20px;text-align: center;">
-                    <a style="color: rgb(224, 63, 90);text-decoration: none" href="{{ route('register') }}">Don't have an account ? Register here</a>
+                    <a style="color: #e6378c;text-decoration: none" href="{{ route('login') }}">I already have an account</a>
                     </div>
                 </div>
             </div>

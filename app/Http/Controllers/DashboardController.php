@@ -27,21 +27,39 @@ class DashboardController extends Controller
     }
 
     public function profileEdit(Request $request)
-    {
+{
+    $user = auth()->user();
 
 
-        $user = auth()->user();
-
-        $user->name = $request->input('name');
-        $user->company_name = $request->input('company_name');
-        $user->phone = $request->input('phone');
-        $user->email = $request->input('email');
-        $user->vat_number = $request->input('vat_number');
-
-        $user->save();
-
-        return redirect()->back()->with('success','Profile Updated Successfully!');
+    $directory = public_path('upload/profile');
+    if (!file_exists($directory)) {
+        mkdir($directory, 0755, true);
     }
+
+    if ($request->hasFile('image')) {
+        if ($user->image) {
+            @unlink($directory . '/' . $user->image);
+        }
+
+        $image = $request->file('image');
+        $imageName = 'profile-' . time() . '.' . $image->getClientOriginalExtension();
+        $image->move($directory, $imageName);
+
+        $user->image = $imageName;
+    }
+
+    $user->name = $request->input('name');
+    $user->company_name = $request->input('company_name');
+    $user->phone = $request->input('phone');
+    $user->email = $request->input('email');
+    $user->vat_number = $request->input('vat_number');
+
+    $user->save();
+
+    return redirect()->back()->with('success', 'Profile Updated Successfully!');
+}
+
+
 
     public function calender()
     {

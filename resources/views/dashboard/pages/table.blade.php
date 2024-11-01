@@ -12,7 +12,6 @@
             }
 
             table {
-                display: block;
                 overflow-x: auto;
                 max-height: 400px;
             }
@@ -28,6 +27,7 @@
         }
         table {
             text-align: center;
+            width: 100%
         }
         thead {
                 background-color: #fae3d7;
@@ -42,7 +42,6 @@
     </style>
 
 
-    <div class="geex-content">
 
         <div style="background-color: #ffffff;color:black;padding:50px;border-radius:20px;" class="container">
             <div class="row">

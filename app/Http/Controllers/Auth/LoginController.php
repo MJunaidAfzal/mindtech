@@ -33,13 +33,45 @@ class LoginController extends Controller
                 'info' => 'Please Edit your Profile First!',
             ]);
         } else {
-            return redirect()->route('form')->with([
+            return redirect()->route('dashboard')->with([
                 'success' => 'Login Successfully!',
             ]);
         }
     }
 
     return back()->withErrors(['email' => 'Email not found.']);
+}
+
+public function register()
+{
+    return view('auth.register');
+}
+
+public function customRegister(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+    ]);
+
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+    ]);
+
+    Auth::login($user);
+
+    if (empty($user->phone)) {
+        return redirect()->route('form')->with([
+            'success' => 'Registration Successful! You are now logged in.',
+            'info' => 'Please Edit your Profile First!',
+        ]);
+    } else {
+        return redirect()->route('dashboard')->with([
+            'success' => 'Registration Successful! You are now logged in.',
+        ]);
+    }
+
 }
 
     public function logout(Request $request)
