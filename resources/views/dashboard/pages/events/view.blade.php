@@ -81,7 +81,7 @@
                     <div class="col-md-4">
                         <br>
                         <label for="Nom dafichage">Nom de l'événement</label><br>
-                        <input value="{{ $event->name }}" type="text" name="name" placeholder="Entrez le nom de l'événement" disabled>
+                        <input value="{{ $event->title }}" type="text" name="title" placeholder="Entrez le nom de l'événement" disabled>
 
                         <br><br>
 
@@ -91,7 +91,7 @@
                             <br><br>
 
                         <label for="Date et heure de l'événement">Date et heure de l'événement</label><br>
-                        <input value="{{ $event->event_date }}" type="date" name="event_date" id="Date et heure de l'événement" placeholder="Enter Date et heure de l'événement" disabled>
+                        <input value="{{ $event->start }}" type="date" name="start" id="Date et heure de l'événement" placeholder="Enter Date et heure de l'événement" disabled>
 
                     </div>
                     <div class="col-md-4">
@@ -107,7 +107,10 @@
 
                         <label for="lieu">lieu</label><br>
                         <input value="{{ $event->place }}" type="text" name="place" placeholder="Entrez lieu" disabled>
+<br><br>
 
+<label for="Fin de la date de l'événement">Fin de la date de l'événement</label><br>
+<input disabled value="{{ $event->end }}" type="date" name="end" id="Fin de la date de l'événement" placeholder="Enter Fin de la date de l'événement">
 
 
                     </div>
@@ -117,7 +120,7 @@
                         <br>
                         <a href="{{ route('events.index') }}">
                             <button type="submit" class="animated-button"
-                            style="background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right">Back To Events List</button>
+                            style="background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right">Retour à la liste des événements</button>
                         </a>
                     </div>
                     <div class="col-md-4 mt-4 reso">
@@ -125,7 +128,7 @@
                         <br>
                       <a href="{{ route('events.index') }}">
                         <button class="animated-button"
-                        style="width:100%; background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right">Back To Events List</button>
+                        style="width:100%; background: linear-gradient(135deg, #ff832b 0%, #ff56a8 100%);color:white;border-radius:10px;border: white 1px groove;padding:10px;float: right">Retour à la liste des événements</button>
                       </a>
 
                     </div>

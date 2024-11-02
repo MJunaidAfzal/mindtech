@@ -76,14 +76,14 @@
 
         <div style="background-color: #ffffff;color:black;padding:50px;border-radius:20px" class="container">
 
-            <form action="{{ route('events.update',$event->name) }}" method="POST">
+            <form action="{{ route('events.update',$event->title) }}" method="POST">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $event->user_id }}">
                 <div class="row">
                     <div class="col-md-4">
                         <br>
                         <label for="Nom dafichage">Nom de l'événement</label><br>
-                        <input value="{{ $event->name }}" type="text" name="name" placeholder="Entrez le nom de l'événement">
+                        <input value="{{ $event->title }}" type="text" name="title" placeholder="Entrez le nom de l'événement">
 
                         <br><br>
 
@@ -93,7 +93,7 @@
                             <br><br>
 
                         <label for="Date et heure de l'événement">Date et heure de l'événement</label><br>
-                        <input value="{{ $event->event_date }}" type="date" name="event_date" id="Date et heure de l'événement" placeholder="Enter Date et heure de l'événement">
+                        <input value="{{ $event->start }}" type="date" name="start" id="Date et heure de l'événement" placeholder="Enter Date et heure de l'événement">
 
                     </div>
                     <div class="col-md-4">
@@ -109,6 +109,11 @@
 
                         <label for="lieu">lieu</label><br>
                         <input value="{{ $event->place }}" type="text" name="place" placeholder="Entrez lieu">
+                    <br><br>
+
+
+                    <label for="Fin de la date de l'événement">Fin de la date de l'événement</label><br>
+                        <input value="{{ $event->end }}" type="date" name="end" id="Fin de la date de l'événement" placeholder="Enter Fin de la date de l'événement">
 
 
 

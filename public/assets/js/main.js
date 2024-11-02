@@ -11,7 +11,7 @@
 	let rtlLayout = geexThemeLayout === "rtl";
 	let topMenu = geexThemeNavbar === "top";
 
-	// Theme Mode Toggle 
+	// Theme Mode Toggle
 	if (geexTheme) {
 		html.setAttribute("data-theme", geexTheme);
 
@@ -19,7 +19,7 @@
 			localStorage.theme === "dark"
 			$(".geex-customizer__btn--light").removeClass("active");
 			$(".geex-customizer__btn--dark").addClass("active");
-			
+
 		} else {
 			localStorage.theme === "light"
 		}
@@ -52,7 +52,7 @@
 			localStorage.themeNavbar === "side"
 		}
 	}
-	
+
 	// Dark Theme
 	function darkTheme(e) {
 		let geexTheme = "dark";
@@ -62,7 +62,7 @@
 		darkMode = true;
 	}
 
-	// Light Theme 
+	// Light Theme
 	function lightTheme(e) {
 		let geexTheme = "light";
 		localStorage.theme = geexTheme;
@@ -70,7 +70,7 @@
 
 		darkMode = false;
 	}
-	
+
 	// RTL Layout
 	function rtlTheme(e) {
 		let geexThemeLayout = "rtl";
@@ -88,7 +88,7 @@
 
 		rtlLayout = false;
 	}
-	
+
 	// Top Navbar
 	function topTheme(e) {
 		let geexThemeNavbar = "top";
@@ -141,7 +141,7 @@
 	$(".geex-customizer__btn--rtl").click(function() {
 		$(".geex-customizer__btn--ltr").removeClass("active");
 		$(".geex-customizer__btn--rtl").addClass("active");
-		
+
 		rtlTheme();
   	})
 
@@ -179,16 +179,16 @@
 			} else if (pageSlug === '' || pageSlug === '#') {
 				$('.geex-header__menu__link').first().addClass('active');
 				$('.geex-sidebar__menu__link').first().addClass('active');
-				
+
 				$('.geex-header__menu__link').first().siblings('.geex-header__submenu').find('.geex-header__menu__link').first().addClass('active');
 				$('.geex-header__menu__link').first().siblings('.geex-header__submenu').slideDown();
-				
+
 				$('.geex-sidebar__menu__link').first().siblings('.geex-sidebar__submenu').find('.geex-sidebar__menu__link').first().addClass('active');
 				$('.geex-sidebar__menu__link').first().siblings('.geex-sidebar__submenu').slideDown();
 			}
 		});
 	}
-	
+
 	// Get the path
 	let path = window.location.pathname;
 	let pathSegments = path.split('/');
@@ -224,8 +224,8 @@
   	$(".geex-btn__toggle-sidebar").click(function(e) {
 		e.preventDefault();
 		$(".geex-sidebar").toggleClass("active");
-		$(".geex-sidebar").animate({ 
-			width: "toggle" 
+		$(".geex-sidebar").animate({
+			width: "toggle"
 		});
 		$("body").addClass("overlay_active");
   	});
@@ -234,8 +234,8 @@
   	$(".geex-sidebar__close").click(function(e) {
 		e.preventDefault();
 		$(".geex-sidebar").removeClass("active");
-		$(".geex-sidebar").animate({ 
-			width: "toggle" 
+		$(".geex-sidebar").animate({
+			width: "toggle"
 		});
 		$("body").removeClass("overlay_active");
   	});
@@ -284,7 +284,7 @@
   	$(".geex-content__header__quickaction__link").click(function(e) {
 		e.preventDefault();
 		var $popup = $(this).siblings('.geex-content__header__popup');
-	
+
 		$popup.slideToggle();
 		$(".geex-content__header__popup").not($popup).slideUp();
   	});
@@ -310,9 +310,9 @@
 	// Chat Search Toggle
 	$(".geex-content__chat__header__filter__btn").click(function(e) {
 		e.preventDefault();
-		
+
 		var $clickedItem = $(this);
-    
+
 		// Toggle the 'active' class on the clicked item
 		$clickedItem.toggleClass("active");
 
@@ -328,7 +328,7 @@
 	$(".toggle-password-type").click(function(e) {
 		e.preventDefault();
 		const input = $(this).siblings("input");
-	
+
 		if (input.attr('type') === 'password') {
 			$(this).removeClass("uil-eye");
 			$(this).addClass("uil-eye-slash");
@@ -344,7 +344,7 @@
 	$(".geex-content__invoice__chat__toggler").click(function(e) {
 		e.preventDefault();
 		var $invoiceChatContent = $(this).siblings('.geex-content__invoice__chat__wrapper');
-	
+
 		$invoiceChatContent.stop().animate({
 			width: 'toggle', // toggles between 0% and 100%
 			opacity: 'toggle' // toggles between 0 and 1
@@ -356,15 +356,15 @@
 	let hour = document.querySelector('.geex-countdown__hours');
 	let minute = document.querySelector('.geex-countdown__minutes');
 	let second = document.querySelector('.geex-countdown__seconds');
-  
+
   	function setCountdown() {
-  
+
 		// Set countdown date
 		let countdownDate = new Date('Jan 01, 2025 16:40:25').getTime();
-	
+
 		// Update countdown every second
 		let updateCount = setInterval(function(){
-	
+
 			// Get today's date and time
 			let todayDate = new Date().getTime();
 
@@ -400,9 +400,9 @@
 			}
 		}, 300)
 	}
-	
+
 	setCountdown()
-	
+
 	// Swiper Slider
 	let swiperContainer = document.querySelector('.swiper-container');
 	let swiper = swiperContainer && new Swiper(swiperContainer, {
@@ -465,18 +465,18 @@
 			eventLimit: true, // allow "more" link when too many events
 			eventSources: [
 			  	{
-					url: 'https://fullcalendar.io/demo-events.json'
+					url: 'http://127.0.0.1:8000/api/events'
 				}
 			],
 			eventRender: function(event, element, view) {
 			   var theDate = event.start
 				var endDate = event.dowend;
 				var startDate = event.dowstart;
-				
+
 				if (theDate >= endDate) {
 					return false;
 				}
-		
+
 				if (theDate <= startDate) {
 				  	return false;
 				}
@@ -485,8 +485,8 @@
 				{
 					id: 1,
 					title:"Lunch",
-					start:'12:00', 
-					end:  '12:30', 
+					start:'12:00',
+					end:  '12:30',
 					dow: [1, 2, 3, 4, 5],
 					dowstart: moment('2018-04-01', 'YYYY-MM-DD'),
 					dowend: moment('2018-05-01', 'YYYY-MM-DD'),
@@ -589,7 +589,7 @@
 		dataLabels: {
 			enabled: false,
 		},
-		
+
 		grid: {
 			show: true,
 			xaxis: {
@@ -601,10 +601,10 @@
 				lines: {
 					show: true,
 				},
-			},  
+			},
 			column: {
 				opacity: 0.2
-			}, 
+			},
 		},
 
 		tooltip: {
@@ -616,7 +616,7 @@
 				'</div>';
 			}
 		},
-		
+
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -635,7 +635,7 @@
 				},
 			},
 		],
-		
+
 	};
 
 	let lineChartContainer = document.querySelector("#line-chart");
@@ -728,7 +728,7 @@
 		dataLabels: {
 			enabled: false,
 		},
-		
+
 		grid: {
 			show: true,
 			xaxis: {
@@ -740,11 +740,11 @@
 				lines: {
 					show: true,
 				},
-				horizontalAlign: "right",	
-			},  
+				horizontalAlign: "right",
+			},
 			column: {
 				opacity: 0.2
-			}, 
+			},
 		},
 
 		tooltip: {
@@ -756,7 +756,7 @@
 				'</div>';
 			}
 		},
-		
+
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -775,7 +775,7 @@
 				},
 			},
 		],
-		
+
 	};
 
 	// Bitcoin
@@ -881,7 +881,7 @@
 		dataLabels: {
 			enabled: false,
 		},
-		
+
 		grid: {
 			show: true,
 			xaxis: {
@@ -893,10 +893,10 @@
 				lines: {
 					show: true,
 				},
-			},  
+			},
 			column: {
 				opacity: 0.2
-			}, 
+			},
 		},
 
 		tooltip: {
@@ -913,7 +913,7 @@
 				'</div>';
 			},
 		},
-		
+
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -932,7 +932,7 @@
 				},
 			},
 		],
-		
+
 	};
 
 	let activityChartContainer = document.querySelector("#market-activity-chart");
@@ -961,7 +961,7 @@
 		dataLabels: {
 		enabled: false,
 		},
-		
+
 		xaxis: {
 			categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			position: 'bottom',
@@ -1151,18 +1151,18 @@
 				name: 'PRODUCT A',
 				data: [2, 5, 1, 7, 2, 4, 1, 4],
 				dataLabels: false,
-			}, 
+			},
 			{
 				name: 'PRODUCT B',
 				data: [1, 3, 2, 8, 3, 7, 3, 2],
 				dataLabels: false,
-			}, 
+			},
 			{
 				name: 'PRODUCT C',
 				data: [1, 7, 5, 3, 2, 4, 5, 3],
 				dataLabels: false,
 			}
-		], 
+		],
 		xaxis: {
 			type: "category",
 			categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -1222,7 +1222,7 @@
 		series: [{
 			data: [40, 32, 45, 65, 23, 54, 23]
 		}],
-	
+
 		chart: {
 			height: 350,
 			type: 'bar',
@@ -1230,9 +1230,9 @@
 				show: false,
 			}
 		},
-	
+
 		colors: ["#1BD5FE"],
-	
+
 		fill: {
 			type: "gradient",
 			gradient: {
@@ -1244,18 +1244,18 @@
 				gradientToColors: ["#216BDB"]
 			}
 		},
-	
+
 		plotOptions: {
 			bar: {
 				columnWidth: 50,
 				borderRadius: 12,
 			}
 		},
-	
+
 		dataLabels: {
 			enabled: false,
 		},
-	
+
 		xaxis: {
 			categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			position: 'bottom',
@@ -1272,7 +1272,7 @@
 				enabled: false,
 			}
 		},
-	
+
 		yaxis: {
 			labels: {
 				show: true,
@@ -1282,12 +1282,12 @@
 			max: 70,
 			tickAmount: 3,
 		},
-	
+
 		grid: {
 			show: true,
 			padding: { left: 0, right: 0, top: 0, bottom: 0 },
 		},
-	
+
 		tooltip: {
 			enabled: true,
 			custom: function ({ series, seriesIndex, dataPointIndex, w }) {
@@ -1295,15 +1295,15 @@
 				let value = w.globals.series[seriesIndex][dataPointIndex]
 				var maxValue = Math.max(...series[0]);
 				var percentage = ((value / maxValue) * 10).toFixed(0);
-				
+
 				// Get the mouse position from the global variable or state
 				var mouseX = window.mouseX || 0;
 				var mouseY = window.mouseY || 0;
-		  
+
 				// Calculate the position of the tooltip above the bar
 				var tooltipX = mouseX - 50;
 				var tooltipY = mouseY - 30; // Adjust the offset as needed
-		  
+
 				return '<div class="custom-tooltip" style="left:' + tooltipX + 'px; top:' + tooltipY + 'px;">' +
 				  '<span class="custom-tooltip__title">$' + percentage + '</span>' +
 				  '<span class="custom-tooltip__subtitle">' + value + ' Visitors</span>' +
@@ -1311,7 +1311,7 @@
 			},
 		},
 	};
-	
+
 	let incomeChartContainer = document.querySelector("#income-chart");
 	let incomeChart = incomeChartContainer && new ApexCharts(incomeChartContainer, incomeOptions);
 	incomeChart && incomeChart.render();
@@ -1321,7 +1321,7 @@
 		series: [{
 			data: [40, 32, 45, 65, 23, 54, 23]
 		}],
-	
+
 		chart: {
 			height: 350,
 			type: 'bar',
@@ -1329,9 +1329,9 @@
 				show: false,
 			},
 		},
-	
+
 		colors: ["#FFBB54"],
-	
+
 		fill: {
 			type: "gradient",
 			gradient: {
@@ -1343,18 +1343,18 @@
 				gradientToColors: ["#FF3300"]
 			}
 		},
-	
+
 		plotOptions: {
 			bar: {
 				columnWidth: 50,
 				borderRadius: 12,
 			}
 		},
-	
+
 		dataLabels: {
 			enabled: false,
 		},
-	
+
 		xaxis: {
 			categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			position: 'bottom',
@@ -1371,7 +1371,7 @@
 				enabled: false,
 			}
 		},
-	
+
 		yaxis: {
 			labels: {
 				show: true,
@@ -1381,12 +1381,12 @@
 			max: 70,
 			tickAmount: 3,
 		},
-	
+
 		grid: {
 			show: true,
 			padding: { left: 0, right: 0, top: 0, bottom: 0 },
 		},
-	
+
 		tooltip: {
 			enabled: true,
 			custom: function ({ series, seriesIndex, dataPointIndex, w }) {
@@ -1394,15 +1394,15 @@
 				let value = w.globals.series[seriesIndex][dataPointIndex]
 				var maxValue = Math.max(...series[0]);
 				var percentage = ((value / maxValue) * 10).toFixed(0);
-	
+
 				// Get the mouse position from the global variable or state
 				var mouseX = window.mouseX || 0;
 				var mouseY = window.mouseY || 0;
-		  
+
 				// Calculate the position of the tooltip above the bar
 				var tooltipX = mouseX - 50;
 				var tooltipY = mouseY - 30; // Adjust the offset as needed
-		  
+
 				return '<div class="custom-tooltip" style="left:' + tooltipX + 'px; top:' + tooltipY + 'px;">' +
 					'<span class="custom-tooltip__title">$' + percentage + '</span>' +
 					'<span class="custom-tooltip__subtitle">' + value + ' Visitors</span>' +
@@ -1410,7 +1410,7 @@
 			},
 		},
 	};
-	
+
 	let expenseChartContainer = document.querySelector("#expense-chart");
 	let expenseChart = expenseChartContainer && new ApexCharts(expenseChartContainer, expenseOptions);
 	expenseChart && expenseChart.render();

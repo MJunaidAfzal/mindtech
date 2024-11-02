@@ -83,8 +83,8 @@
                     <div class="col-md-4">
                         <br>
                         <label for="Nom dafichage">Nom de l'événement</label><br>
-                        <input type="text" name="name" placeholder="Entrez le nom de l'événement">
-                        @error('name')
+                        <input type="text" name="title" placeholder="Entrez le nom de l'événement">
+                        @error('title')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                         <br><br>
@@ -97,8 +97,8 @@
                         @enderror<br><br>
 
                         <label for="Date et heure de l'événement">Date et heure de l'événement</label><br>
-                        <input type="date" name="event_date" id="Date et heure de l'événement" placeholder="Enter Date et heure de l'événement">
-                        @error('event_date')
+                        <input type="date" name="start" id="Date et heure de l'événement" placeholder="Enter Date et heure de l'événement">
+                        @error('start')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                     </div>
@@ -119,7 +119,13 @@
                         <input type="text" name="place" placeholder="Entrez lieu">
                         @error('place')
                         <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                    @enderror <br><br>
+
+                    <label for="Fin de la date de l'événement">Fin de la date de l'événement</label><br>
+                        <input type="date" name="end" id="Fin de la date de l'événement" placeholder="Enter Fin de la date de l'événement">
+                        {{-- @error('end')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror --}}
 
 
                     </div>

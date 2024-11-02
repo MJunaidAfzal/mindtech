@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->string('title');
             $table->integer('number_of_place');
-            $table->date('event_date');
+            $table->date('start');
+            $table->date('end');
             $table->enum('status', [
                 'Request for participation',
                 'Registered',

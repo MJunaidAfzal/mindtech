@@ -7,7 +7,7 @@
         @media (min-width: 100px) {
             .container {
                 margin-top: -80px;
-                height: 660px;
+                height: 933px;
                 overflow-y: auto;
             }
 
@@ -64,9 +64,9 @@
                         @foreach ($events as $event)
                         <tbody>
                             <tr>
-                                <td>{{ $event->name }}</td>
+                                <td>{{ $event->title }}</td>
                                 <td>{{ $event->number_of_place }}</td>
-                                <td>{{ \Carbon\Carbon::parse($event->event_date)->format('d/m/Y H:i') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($event->start)->format('d/m/Y H:i') }}</td>
                                 <td>
                                     @if ($event->status == 'Request for participation')
                                     <span style="padding: 10px;background-color:#9ce995;color:black;width:180px"
@@ -84,17 +84,17 @@
                                 </td>
                                 <td>{{ $event->place }}</td>
                                 <td style="width: 40%">
-                                    <a href="{{ route('events.edit',$event->name) }}">
+                                    <a href="{{ route('events.edit',$event->title) }}">
                                             <button style="color: white" class="btn-info btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                     </a>
-                                    <a href="{{ route('events.view',$event->name) }}">
+                                    <a href="{{ route('events.view',$event->title) }}">
                                         <button style="color: white" class="btn-warning btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                 </a>
-                                    <form action="{{ route('events.destroy', ['name' => $event->name]) }}" method="POST" style="display:inline;">
+                                    <form action="{{ route('events.destroy', ['title' => $event->title]) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')" class="btn-danger btn-sm" type="submit"><i style="color: white" class="fa fa-trash"></i></button>

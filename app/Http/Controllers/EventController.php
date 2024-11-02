@@ -27,25 +27,28 @@ class EventController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'name' => 'required',
+            'title' => 'required',
             'number_of_place' => 'required',
-            'event_date' => 'required',
+            'start' => 'required',
+            // 'end' => 'required',
             'status' => 'required',
             'place' => 'required',
         ], [
             'user_id.required' => "L'identifiant de l'utilisateur est requis.",
-            'name.required' => "Le nom est requis.",
+            'title.required' => "Le nom est requis.",
             'number_of_place.required' => "Le nombre de places est requis.",
-            'event_date.required' => "La date de l'événement est requise.",
+            'start.required' => "La date de l'événement est requise.",
+            // 'end.required' => "la date de fin de l'événement est requise.",
             'status.required' => "Le statut est requis.",
             'place.required' => "Le lieu est requis.",
         ]);
 
         $event = Event::create([
             'user_id' => $request->user_id,
-            'name' => $request->name,
+            'title' => $request->title,
             'number_of_place' => $request->number_of_place,
-            'event_date' => $request->event_date,
+            'start' => $request->start,
+            'end' => $request->end,
             'status' => $request->status,
             'place' => $request->place,
         ]);
@@ -58,29 +61,30 @@ class EventController extends Controller
         }
     }
 
-    public function editEvents($name)
+    public function editEvents($title)
     {
         $data ['title'] = 'Edit Events';
-        $data ['heading'] = 'modifier lévénement '. $name;
-        $data ['event'] = Event::where('name',$name)->first();
+        $data ['heading'] = 'modifier lévénement '. $title;
+        $data ['event'] = Event::where('title',$title)->first();
         return view('dashboard.pages.events.edit',$data);
     }
 
-    public function viewEvents($name)
+    public function viewEvents($title)
     {
         $data ['title'] = 'View Events';
-        $data ['heading'] = 'Afficher les événements '. $name;
-        $data ['event'] = Event::where('name',$name)->first();
+        $data ['heading'] = 'Afficher les événements '. $title;
+        $data ['event'] = Event::where('title',$title)->first();
         return view('dashboard.pages.events.view',$data);
     }
 
-    public function eventUpdate(Request $request, $name)
+    public function eventUpdate(Request $request, $title)
     {
-        $event = Event::where('name',$name)->update([
+        $event = Event::where('title',$title)->update([
             'user_id' => $request->user_id,
-            'name' => $request->name,
+            'title' => $request->title,
             'number_of_place' => $request->number_of_place,
-            'event_date' => $request->event_date,
+            'start' => $request->start,
+            'end' => $request->end,
             'status' => $request->status,
             'place' => $request->place,
         ]);
@@ -93,9 +97,9 @@ class EventController extends Controller
         }
     }
 
-    public function destroy($name)
+    public function destroy($title)
     {
-        $event = Event::where('name', $name)->first();
+        $event = Event::where('title', $title)->first();
 
         if (!$event) {
             return redirect()->route('events.index')->with('error', 'Événement introuvable.');

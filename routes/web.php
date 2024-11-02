@@ -33,9 +33,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('events' , [EventController::class , 'index'])->name('events.index');
 Route::get('/add-events', [EventController::class, 'addEvents'])->name('events.create');
 Route::post('/events-store', [EventController::class, 'eventStore'])->name('events.store');
-Route::get('/edit-events-{name}', [EventController::class, 'editEvents'])->name('events.edit');
-Route::post('/events-update-{name}', [EventController::class, 'eventUpdate'])->name('events.update');
-Route::delete('events-delete-{name}' , [EventController::class , 'destroy'])->name('events.destroy');
-Route::get('/view-events-{name}', [EventController::class, 'viewEvents'])->name('events.view');
+Route::get('/edit-events-{title}', [EventController::class, 'editEvents'])->name('events.edit');
+Route::post('/events-update-{title}', [EventController::class, 'eventUpdate'])->name('events.update');
+Route::delete('events-delete-{title}' , [EventController::class , 'destroy'])->name('events.destroy');
+Route::get('/view-events-{title}', [EventController::class, 'viewEvents'])->name('events.view');
+
 
 

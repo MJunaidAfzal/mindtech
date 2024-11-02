@@ -91,17 +91,11 @@
                 });
             @endif
         </script>
+
+    <script src="{{ asset('assets/vendor/js/jquery/jquery-3.5.1.min.js') }}"></script>
         {{-- @include('dashboard.partials.footer') --}}
     </main>
     @stack('scripts')
-    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
-<script>
-   $(document).ready(function () {
-       $('#table').DataTable();
-   });
-
-   </script>
     @include('dashboard.partials.scripts')
 </body>
 </html>
