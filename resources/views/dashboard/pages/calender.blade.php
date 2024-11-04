@@ -32,7 +32,6 @@
 
 
 			<div style="margin-top: -130px" class="geex-content__wrapper">
-				<div class="geex-content__section-wrapper">
 					<div class="geex-content__section geex-content__section--transparent geex-content__calendar">
 
 
@@ -60,7 +59,6 @@
 							<div id='geex-calendar' class="geex-calendar"></div>
 						</div>
 					</div>
-				</div>
 			</div>
 
 @endsection
